@@ -1,0 +1,233 @@
+
+        /* إعدادات الخطوط والخلفية الأساسية */
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--background-center, #0a5c53) 0%, var(--background-edge, #05332e) 100%);
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden; /* يمنع التمرير الفراغي تماماً */
+        }
+
+        /* تأثير خلفية متحركة خفيفة للفخامة */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: bgMove 40s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes bgMove {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 40px 40px; }
+        }
+
+        /* الحاوية الرئيسية للموقع - تتكيف بحجم المحتوى تماماً */
+        .container {
+            width: 100%;
+            max-width: 520px;
+            max-height: 95vh; /* تضمن عدم خروج المربع عن الشاشة في الشاشات الصغيرة */
+            overflow-y: auto; /* يسمح بالتمرير داخل المربع نفسه فقط إذا كان الهاتف صغيراً جداً */
+            background: rgba(10, 74, 67, 0.35);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 
+                        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+            z-index: 1;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* إخفاء شريط التمرير الداخلي للمظهر الجمالي */
+        .container::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* شعار العتبة العسكرية */
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* النصوص العلوية */
+        .title-en {
+            color: var(--accent, #00e5ff);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0, 229, 255, 0.3);
+        }
+
+        .title-ar {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* قائمة الروابط */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* التصميم المرن للأزرار لمنع أي فراغات عشوائية */
+        .link-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 12px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* محاذاة محتويات الزر بالتساوي */
+        .link-content-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .text-wrapper {
+            flex-grow: 1;
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        /* تأثير التوهج الداخلي عند تمرير الماوس */
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .link-item:hover::before, .link-item:active::before {
+            left: -100%;
+        }
+
+        /* تأثير التمرير والضغط */
+        .link-item:hover, .link-item:active {
+            transform: translateY(-2px) scale(1.01);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 229, 255, 0.15);
+        }
+
+        /* إعدادات الأيقونات */
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .link-item:hover .icon-box {
+            transform: scale(1.1);
+        }
+
+        /* مخصص لأيقونة الموقع المرفقة */
+        .custom-web-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        /* سهم الانتقال الجانبي الأنيق */
+        .arrow-box {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-item:hover .arrow-box {
+            opacity: 1;
+            transform: translateX(-3px);
+            color: var(--accent, #00e5ff);
+        }
+
+        /* ألوان الأيقونات الخاصة بكل منصة */
+        .whatsapp-icon { color: #25D366; }
+        .telegram-icon { color: #26A5E4; }
+        .youtube-icon { color: #FF0000; }
+        .facebook-icon { color: #1877F2; }
+        .instagram-icon { color: #E1306C; }
+
+        /* تذييل الصفحة */
+        .footer {
+            margin-top: 25px;
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.5px;
+        }
+    
+/* Accessibility additions preserve the reference layout. */
+a:focus-visible { outline: 3px solid var(--accent, #00e5ff); outline-offset: 4px; }
+body.no-motion::before, body.no-motion .container, body.no-motion .logo { animation: none; }
+body.no-motion *, body.no-motion *::before { transition: none !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

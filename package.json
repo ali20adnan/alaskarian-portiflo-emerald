@@ -1,0 +1,15 @@
+{
+  "name": "alaskarian-news-links",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Faithful Alaskarian News links page with a persistent, authenticated Arabic admin dashboard.",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
+    "test": "node --test tests/server.test.js",
+    "check": "node --check server.js && node --check lib/store.js && node --check lib/render.js && node --check public/admin.js && node --check public/i18n.js && node --check public/site.js",
+    "assets": "node scripts/download-assets.mjs"
+  }
+}

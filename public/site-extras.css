@@ -1,0 +1,9 @@
+/* Bilingual controls and custom icons; the reference layout stays intact. */
+.language-switch{position:absolute;inset-block-start:15px;inset-inline-end:17px;z-index:2;color:#d0e8df;background:#ffffff08;border:1px solid #ffffff1c;text-decoration:none;font-size:11px;line-height:1.8;padding:5px 12px;border-radius:8px;transition:background .2s}
+.language-switch:hover{background:#ffffff15;color:white}
+.custom-link-icon{width:30px;height:30px;object-fit:contain;border-radius:6px}
+.icon-box{flex-shrink:0}.text-wrapper{min-width:0;overflow-wrap:anywhere}.title-en,.title-ar,.footer{overflow-wrap:anywhere}
+[dir=ltr] .text-wrapper{text-align:left;padding-right:0;padding-left:15px}
+[dir=ltr] .arrow-box{transform:rotate(180deg)}
+[dir=ltr] .link-item:hover .arrow-box{transform:translateX(3px) rotate(180deg)}
+@media(prefers-reduced-motion:reduce){.language-switch{transition:none}}
